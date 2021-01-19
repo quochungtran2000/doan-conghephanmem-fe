@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { UserProvider } from './Context/UserContext'
+import { CartProvider } from './Context/CartContext'
+import {ToastContainer} from 'react-toastify'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserProvider>
+      <CartProvider>
+        <BrowserRouter >
+          <App />
+        </BrowserRouter>
+        <ToastContainer />
+      </CartProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

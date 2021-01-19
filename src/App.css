@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
+* {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f1f1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+    min-height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App main {
+    min-height: calc(100vh - 400px);
+    width: 100%;
+    position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.form-center{
+    display: inline-block;
+    margin: 5rem auto 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 1px 2px 3px grey;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-center .cus-form-title{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.form-center form {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.form-center form .txt-field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 2rem 0;
+}
+
+.txt-field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.txt-field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.3s linear;
+}
+
+.txt-field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: 0.3s linear;
+}
+
+.txt-field input:focus ~ label
+,.txt-field input:valid ~ label
+{
+    top: -5px;
+    color: #2691d9;
+}
+
+.txt-field input:focus ~ span::before
+,.txt-field input:valid ~ span::before
+{
+    width: 100%;
+}
+
+.cus-form-button{
+    width: 100%;
+    height: 50%;
+    border-radius: 25px;
+    border: 1px solid;
+    font-size: 18px;
+    color: #e9f4fb;
+    background: #2691d9;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
 }
