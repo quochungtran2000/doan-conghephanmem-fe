@@ -60,7 +60,10 @@ function Invoice() {
                 :
                 (
                     <div className="row">
-                        <div>Nothin</div>
+                        <div className="pt-5 pb-5 text-center">
+                            <h3 className="mb-5">Invoice empty</h3>
+                            <Link className="btn btn-outline-success" to="products">Go to Products</Link>
+                        </div>
                     </div>
                 )}
         </div>

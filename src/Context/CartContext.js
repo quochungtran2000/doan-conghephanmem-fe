@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { toast } from 'react-toastify';
 
 const CartContext = React.createContext()
 
@@ -18,12 +19,14 @@ const CartProvider = (props) => {
             const temp = [...cart];
             temp[index].quantity = temp[index].quantity+ tempQuantity;
             setCart(temp);
+            toast.success('added')
         }else{
             console.log('else')
             const temp = [...cart];
             item['quantity'] = tempQuantity;
             temp.push(item)
             setCart(temp);
+            toast.success('added')
         }
     }
 
@@ -34,8 +37,10 @@ const CartProvider = (props) => {
     const totalPrice = cart.reduce((total,item) => total + item.quantity*item.salePrice,0)
 
     const deleteFromCart = (item) => {
-        const temp = [...cart].filter(cartItem => cartItem.id === item.id);
+        const temp = [...cart].filter(cartItem => cartItem.id !== item.id);
+        console.log(temp)
         setCart(temp)
+        toast.success('deleted')
     }
 
     return (

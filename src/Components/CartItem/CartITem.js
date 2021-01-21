@@ -9,6 +9,7 @@ import UpdateForm from '../Form/UpdateForm'
 import FormatPrice from '../utils/FormatPrice'
 
 export default function CartItem(props) {
+    const { refetch } = props
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -40,7 +41,7 @@ export default function CartItem(props) {
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Update Product</DialogTitle>
                 <DialogContent>
-                    <UpdateForm onClose={handleClose} id={item.id}/>
+                    <UpdateForm refetch={refetch} onClose={handleClose} id={item.id}/>
                 </DialogContent>
             </Dialog>
         </div>

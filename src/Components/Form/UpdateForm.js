@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const UpdateProduct = (props) =>  {
     const { register, handleSubmit } = useForm();
-    const { onClose } = props
+    const { onClose, refetch } = props
     const { id } = props;
     const [ product, setProduct ] = useState({})
 
@@ -14,9 +14,15 @@ const UpdateProduct = (props) =>  {
         Axios.get(`http://localhost:1708/product/${id}`)
         .then(res => {
             console.log(res)
-            res.data.success ? setProduct(res.data.payload) : toast.error(res.data.payload.sqlMessage)
+            if(res.data.success){
+                setProduct(res.data.payload)
+                // setTimeout(() => refetch(),1)
+                // refetch()
+            } else{
+                toast.error(res.data.payload.sqlMessage)
+            }
         })
-    },[id])
+    },[id, refetch])
 
     const onSubmit = ({ name, price, standardPrice, salePrice}) => {
         console.log('name', name ? true : false)

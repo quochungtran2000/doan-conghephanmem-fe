@@ -6,6 +6,13 @@ import CartItem from '../Components/CartItem/CartITem'
 function Products() {
     const [data, setData] = useState([])
 
+    const refetch = () => {
+        Axios.get('http://localhost:1708/product')
+        .then(res => {
+            res.data.success ? setData(res.data.payload) : toast.error(res.data.payload)
+        })
+    }
+
     useEffect(() => {
         Axios.get('http://localhost:1708/product')
         .then(res => {
@@ -19,7 +26,7 @@ function Products() {
                 <h1 className="text-center mt-5 mb-5">Products</h1>
             </div>
             <div className="row">
-                {data.map((item, index )=> (<CartItem key={index} item={item} />)
+                {data.map((item, index )=> (<CartItem refetch={refetch} key={index} item={item} />)
                 )}
             </div>
         </div>
