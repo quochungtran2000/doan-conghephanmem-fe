@@ -26,7 +26,7 @@ export default function Header() {
                     (<li><Link className="header-link" to="/login">Login</Link></li>)
                 :   (
                     <>
-                        <li><span className="header-link">{user.username}</span></li>
+                        <li><Link to="/my-account" className="header-link">{user.username}</Link></li>
                         <li><span className="header-link" onClick={()=>logout()} >Logout</span></li>
                     </>
                     )

@@ -11,7 +11,13 @@ function Login() {
     const onSubmit = (data) => {
         Axios.post('http://localhost:1708/user/login', data)
         .then(res => {
-            res.data.success ? updateUser(res.data.payload) : toast.error(res.data.payload)
+            if(res.data.success){
+                console.log(res)
+                // getToken(res.data.token)
+                updateUser(res.data.token)
+            }else{
+                toast.error(res.data.payload)
+            }
         })
     };
     return (

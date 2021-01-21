@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import jwt from 'jsonwebtoken'
 
 const UserContext = React.createContext()
 
@@ -12,11 +13,13 @@ const UserProvider = (props) => {
 
     const [ user, setUser ] = useState(initial)
 
-    const updateUser = ({username, isAdmin}) => {
+    const updateUser = (token) => {
+        const { username, isAdmin } = jwt.decode(token);
+        console.log(username, isAdmin)
         setUser({
             isLoggined: true,
             isAdmin: Boolean(isAdmin),
-            username: username
+            username
         })
     }
 
